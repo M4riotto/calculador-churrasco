@@ -12,10 +12,13 @@ function cadastrarPessoas() {
     cadastros.push(cadastroP); // o array de dentro da função irá ser empurrado para o array fora da função.
     console.log(cadastros);
 
-    x(); //função x
-    y(); //função y
     iNome.value="";
     iChild.value=""; //como se fosse uma cx em branco que irá receber um texto.
+
+    y(); //função y
+    x(); //função x
+    
+    
 
    
 }
@@ -39,11 +42,13 @@ function cadastrarIngredientes() {
     cadastrosA.push(cadastroI);
     console.log(cadastrosA);
 
-    y(); //função y
     z(); //função z
+    x(); //função y
+    
     iIngrediente.value="";
     iqtdA.value="";
-    iqtdC.value=""
+    iqtdC.value="";
+    iValor.value="";
     // iqtd.value="";
 }   
 
@@ -59,14 +64,21 @@ function x() {
     var corpoTabela1 = document.getElementById("corpoTabela1");
     corpoTabela1.innerHTML=""; //O corpo tabela 1 irá receber um texto.
 
+
     for (var index = 0; index < cadastros.length; index++) {
         var trPessoa = document.createElement("tr"); //tr é linha.
         var td1 = document.createElement("td"); //td é célula dentro da linha.
+        var tdv = document.createElement("td"); //td é célula dentro da linha.
 
         var cadastroP = cadastros[index];
 
+        var cadastroI = cadastrosA[index];
+
         td1.innerText=cadastroP.nome;
         trPessoa.appendChild(td1);
+        
+        tdv.innerText=cadastroI.valor;
+        trPessoa.appendChild(tdv);
 
         corpoTabela1.appendChild(trPessoa);
     }
