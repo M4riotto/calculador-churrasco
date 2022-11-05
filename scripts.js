@@ -63,26 +63,60 @@ function cadastrarIngredientes() {
 function x() {
     var corpoTabela1 = document.getElementById("corpoTabela1");
     corpoTabela1.innerHTML=""; //O corpo tabela 1 irá receber um texto.
+    
+    var trp = document.createElement("tr");
+            var tdt1 = document.createElement("td");
+            var tdt2 = document.createElement("td");
+            var tdt3 = document.createElement("td");
+       
+    cadastros.forEach(function(convidado){
+            
 
+            tdt1.innerHTML=convidado.nome;
+            trp.appendChild(tdt1);
 
-    for (var index = 0; index < cadastros.length; index++) {
-        var trPessoa = document.createElement("tr"); //tr é linha.
-        var td1 = document.createElement("td"); //td é célula dentro da linha.
-        var tdv = document.createElement("td"); //td é célula dentro da linha.
-
-        var cadastroP = cadastros[index];
-
-        var cadastroI = cadastrosA[index];
-
-        td1.innerText=cadastroP.nome;
-        trPessoa.appendChild(td1);
+            var vtpessoa=0;
+            
+            cadastrosA.forEach(function(produto){
+                var valoruniad = 0;
+                var valorunicr = 0;
+                var unidaddeconviados = parseFloat(produto.qtdA) + parseFloat(produto.qtdC);
+                var valorunicr = ((((produto.qtdC * 100) / unidaddeconviados) / 100 ) * produto.valor ) * parseInt(convidado.qtdChild); 
+                var valoruniad = ((((produto.qtdA * 100) / unidaddeconviados) / 100 ) * produto.valor); 
+                vtpessoa += (valorunicr + valoruniad);
+            });
         
-        tdv.innerText=cadastroI.valor;
-        trPessoa.appendChild(tdv);
+            tdt2.innerText=vtpessoa.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            trp.appendChild(tdt2);
+        })
+        
+        
 
-        corpoTabela1.appendChild(trPessoa);
-    }
-}
+        corpoTabela1.appendChild(trp);
+        }
+
+        // doacoes.forEach(function(conviado){
+        //     var trp = document.createElement("tr");
+        //     var tdt1 = document.createElement("td");
+        //     var tdt2 = document.createElement("td");
+        //     var tdt3 = document.createElement("td");
+        
+        //     tdt1.innerText=conviado.nome;
+        //     trp.appendChild(tdt1);
+        
+        //     var vtpessoa=0;
+        //     listaprodutos.forEach(function(produto){
+        //         valoruniad = 0;
+        //         valorunicr = 0;
+        //         var unidaddeconviados = parseFloat(produto.qntadulto) + parseFloat(produto.quantcr);
+        //         var valorunicr = ((((produto.quantcr * 100) / unidaddeconviados) / 100 ) * produto.valor ) * parseInt(conviado.cr); 
+        //         var valoruniad = ((((produto.qntadulto * 100) / unidaddeconviados) / 100 ) * produto.valor); 
+        //         vtpessoa += (valorunicr + valoruniad);
+        //     });
+        
+        //     tdt2.innerText=vtpessoa.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+        //     trp.appendChild(tdt2);
+
 
 function y() {
     var corpoTabela2 = document.getElementById("corpoTabela2");
