@@ -134,10 +134,14 @@ function y() {
             td4.innerText = cadastroI.ingt;
             trIngredientes.appendChild(td4);
 
-            
-            var iqtd = (parseFloat(cadastroI.qtdA) + (parseFloat(cadastroI.qtdC) * parseFloat(cadastroP.qtdChild))); //soma a quantidade em kg/g dos ingredientes.
+            cadastros.forEach(teste => {
+                 var iqtd = (parseFloat(cadastroI.qtdA) + (parseFloat(cadastroI.qtdC) * parseFloat(teste.qtdChild))); //soma a quantidade em kg/g dos ingredientes.
             td5.innerText = iqtd;
             trIngredientes.appendChild(td5);
+            });
+
+            
+           
 
             corpoTabela3.appendChild(trIngredientes);
         }
