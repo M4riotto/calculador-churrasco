@@ -75,16 +75,11 @@ function x() {
             
             cadastrosA.forEach(function(produto){
                 
-                var valoruniad = 0;
-                var valorunicr = 0;
+                var unidaddeconviados = parseFloat(produto.qtdA) + (parseFloat(produto.qtdC) * parseFloat(convidado.qtdChild));
 
-                var unidaddeconviados = parseFloat(produto.qtdA) + parseFloat(produto.qtdC);
+                valorT = ((parseFloat(unidaddeconviados) / 1000) * parseFloat(produto.valor))
 
-                var valorunicr = ((((produto.qtdC * 100) / unidaddeconviados) / 100 ) * produto.valor ) * parseInt(convidado.qtdChild); 
-
-                var valoruniad = ((((produto.qtdA * 100) / unidaddeconviados) / 100 ) * produto.valor); 
-
-                vtpessoa += (valorunicr + valoruniad);
+                vtpessoa += valorT;
             });
         
             td2.innerText=vtpessoa.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
@@ -129,7 +124,6 @@ function y() {
             
 
             var cadastroI = cadastrosA[index];
-            var cadastroP = cadastros[index];
 
             td4.innerText = cadastroI.ingt;
             trIngredientes.appendChild(td4);
